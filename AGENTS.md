@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Product catalogue lives in src/lib/products.ts and contact details in src/lib/site.ts; pages render from these so content edits happen in one place.
+- Contact form inserts into the inquiries table (insert-only for visitors) so submissions are stored securely, never readable from the browser.
