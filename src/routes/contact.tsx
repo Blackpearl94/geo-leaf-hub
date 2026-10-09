@@ -6,10 +6,10 @@ import { products } from "@/lib/products";
 import { pending, site } from "@/lib/site";
 import { PageHero } from "@/components/site/Sections";
 
-type Search = { product?: string };
+type Search = { product?: string | undefined };
 
 export const Route = createFileRoute("/contact")({
-  validateSearch: (s: Record<string, unknown>): Search => ({ product: typeof s.product === "string" ? s.product : undefined }),
+  validateSearch: (s: Record<string, unknown>): Search => ({ product: typeof s["product"] === "string" ? s["product"] : undefined }),
   head: () => ({
     meta: [
       { title: "Contact GeoLeaf | Product Inquiries" },
@@ -150,7 +150,7 @@ function Contact() {
   );
 }
 
-function Field({ label, name, required, error, children }: { label: string; name: string; required?: boolean; error?: string; children: React.ReactNode }) {
+function Field({ label, name, required, error, children }: { label: string; name: string; required?: boolean; error?: string | undefined; children: React.ReactNode }) {
   return (
     <div className="space-y-1.5">
       <label htmlFor={name} className="text-sm font-semibold">
